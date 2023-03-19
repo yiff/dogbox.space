@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fredslist</title>
+    <link rel="shortcut icon" href="/static/fredslist/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #dbd6cc;
+        }
+        
+        .post{
+            magin:auto;
+            align: center;
+            width: 50%;
+            background-color: white;
+            padding: 20px;
+            margin-top 20px;
+        }
+        
+        .card {
+            margin: auto;
+            align: center;
+            width: 50%;
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+    <div id="fredhead">
+        <img src="https://pupbox.duckdns.org/static/fredslist/fredslistLogo.png">
+    </div>
+    <br>
+    <br>
+    <br>
+    <center>
+        <a href="{{url_for('fredslist')}}">Back to main page</a>
+    </center>
+    <br>
+</head>
+
+<body>
+    <center>
+        <div class="post" align="center">
+            <form method="post">
+		<label for="postID">Post ID:</label><br>
+		<input type="text" id="postID" name="postID"><br>
+                <label for="imageURL">Image URL:</label><br>
+                <input type="text" id="imageURL" name="imageURL"><br>
+                <label for="message">Message:</label><br>
+                <input type="text" id="message" name="message"><br>
+		<label for="secretKey">Secret Key:</label><br>
+		<input type="text" id="secretKey" name="secretKey"><br><br>
+                <button type="button" onclick="preview()">Preview</button>
+                <input type=submit name= "submitbutton" value="Submit Changes"><br><br>
+		<!--<label for="delete">Type 'DELETE' here and hit the 'DELETE' button to remove this listing.</label><br>-->
+		<!--<input type="text" id="delete" name="delete">-->
+		<!--<input type=submit name="deletebutton" value="DELETE"</button>-->
+            </form>
+        </div>
+        <div id="posts">
+            <div class=card align="center">
+                <img id="previewImage" src="" alt="No image yet." style="max-width: 100%">
+                <p id="previewMessage">
+                    No message yet.
+                </p>
+            </div>
+        </div>
+	<p>
+		Don't forget your secret key! You'll need it to edit/delete your post from the main page!
+	</p>
+    </center>
+</body>
+<script>
+    function preview() {
+        document.getElementById("previewImage").src = document.getElementById("imageURL").value;
+        document.getElementById("previewMessage").innerHTML = document.getElementById("message").value;
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    var id = urlParams.get('id');
+
+    var pid = id-1;
+    var postList = {{fredslistPostsList | tojson}};
+    var post = postList[pid];
+    document.getElementById("postID").value = id;
+    document.getElementById("imageURL").value = post[0];
+    document.getElementById("message").value = post[1];
+
+</script>
+
+</html>

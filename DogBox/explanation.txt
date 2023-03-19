@@ -1,0 +1,4 @@
+the daemon for our systemctl process is located in /lib/systemd/system
+
+it's called dogbox.service and it just runs the gunicorn command 
+to host our website

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fredslist</title>
+    <link rel="shortcut icon" href="/static/fredslist/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #dbd6cc;
+        }
+        
+        .card {
+            margin: auto;
+            align: center;
+            width: 50%;
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+	.editText {
+	    text-align: right;
+	    float: right;
+	}
+    </style>
+    <div id="fredhead">
+        <img src="{{url_for('static', filename='fredslist/fredslistLogo.png')}}">
+    </div>
+    <br>
+    <br>
+    <br>
+    <center>
+        <a href="{{url_for('fredslistmakelisting')}}">Make Listing</a>
+    </center>
+    <br>
+</head>
+
+<body>
+    <div id="posts">
+	{% for i in fredslistPostsList|reverse %}
+		<div class=card style="align: center">
+			<div class=editText><a href="{{url_for('fredslisteditlisting')}}?id={{i[2]}}">[edit]</a></div><br>
+			{% if (i[0].strip) != ""  %}
+				<center>
+					<img src="{{i[0]}}" style="align: center;max-width: 100%">
+
+				</center>
+			{% endif %}
+
+			{% if i[1] is defined %}
+				<p>
+					<center>
+						{{i[1]}}
+					</center>
+				</p>
+			{% endif %}
+		</div>
+	{% endfor %}
+    </div>
+</body>
+
+</html>

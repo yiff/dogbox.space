@@ -1,0 +1,41 @@
+<style>
+
+header {
+ text-align: center;
+}
+
+body {
+ text-align: center;
+ background-image: url('{{url_for('static', filename='homepage/firebackground.gif')}}');
+}
+
+h3 {
+ color: red;
+}
+
+text {
+ color: blue;
+}
+
+</style>
+
+<header>
+<h3>WELCOME TO THE DOG BOX</h3>
+<img src={{url_for('static', filename='homepage/rocketorbb.GIF')}}>
+<img src={{url_for('static', filename='homepage/skeleton.gif')}}>
+</header>
+
+<br>
+
+<body>
+<text>where would you like to go?</text>
+
+<br>
+<br>
+
+<button onclick="window.location.href='{{url_for('radio')}}';">RADIO</button>
+<button onclick="window.location.href='{{url_for('autoindex')}}';">FTP</button>
+<button onclick="window.location.href='{{url_for('minecraft')}}';">MINECRAFT</button>
+<button onclick="window.location.href='{{url_for('RemotePrimManipulation')}}';">REMOTE PRIM MANIPULATION</button>
+<button onclick="window.location.href='{{url_for('fredslist')}}';">FREDSLIST</button>
+</body>
