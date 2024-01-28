@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <style>
 
 header {
@@ -6,28 +7,46 @@ header {
 
 body {
  text-align: center;
- background-image: url('{{url_for('static', filename='homepage/firebackground.gif')}}');
-}
-
-h3 {
- color: red;
 }
 
 text {
- color: blue;
+ color: white;
+}
+
+#main {
+ position: absolute;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: 100%;
+ width: 100%;
+}
+
+#menu {
+ position: absolute;
 }
 
 </style>
 
-<header>
-<h3>WELCOME TO THE DOG BOX</h3>
-<img src={{url_for('static', filename='homepage/rocketorbb.GIF')}}>
-<img src={{url_for('static', filename='homepage/skeleton.gif')}}>
-</header>
-
-<br>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href={{url_for('static', filename='homepage/styles.css')}}>
+	<title>DOGBOX</title>
+</head>
 
 <body>
+<div id="main">
+<canvas id="Matrix" style="position: absolute"></canvas>
+<script src={{url_for('static', filename='homepage/index.js')}}></script>
+
+<div id="menu">
+<img src={{url_for('static', filename='homepage/borzoiMain.gif')}}></img>
+
+<br>
+<br>
+
 <text>where would you like to go?</text>
 
 <br>
@@ -38,4 +57,6 @@ text {
 <button onclick="window.location.href='{{url_for('minecraft')}}';">MINECRAFT</button>
 <button onclick="window.location.href='{{url_for('RemotePrimManipulation')}}';">REMOTE PRIM MANIPULATION</button>
 <button onclick="window.location.href='{{url_for('fredslist')}}';">FREDSLIST</button>
+</div>
+</div>
 </body>
